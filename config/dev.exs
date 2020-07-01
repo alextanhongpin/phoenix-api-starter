@@ -2,10 +2,10 @@ use Mix.Config
 
 # Configure your database
 config :dood, Dood.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "dood_dev",
-  hostname: "localhost",
+  username: System.get_env("DB_USER"),
+  password: System.get_env("DB_PASS"),
+  database: System.get_env("DB_NAME"),
+  hostname: System.get_env("DB_HOST"),
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
@@ -17,7 +17,7 @@ config :dood, Dood.Repo,
 # with webpack to recompile .js and .css sources.
 config :dood, DoodWeb.Endpoint,
   http: [port: 4000],
-  debug_errors: true,
+  debug_errors: false, # Don't show HTML page.
   code_reloader: true,
   check_origin: false,
   watchers: []

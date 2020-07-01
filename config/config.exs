@@ -11,6 +11,10 @@ config :dood,
   ecto_repos: [Dood.Repo],
   generators: [binary_id: true]
 
+# Add support for microseconds at DB level.
+# This avoids having to configure it on every migration file.
+config :dood, Dood.Repo, migration_timestamps: [type: :utc_datetime_usec]
+
 # Configures the endpoint
 config :dood, DoodWeb.Endpoint,
   url: [host: "localhost"],
