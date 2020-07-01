@@ -5,6 +5,12 @@ defmodule DoodWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/", DoodWeb do
+    pipe_through :api
+
+    get "/", PageController, :index
+  end
+
   scope "/api", DoodWeb do
     pipe_through :api
   end
